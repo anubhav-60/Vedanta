@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vedanta Driver Details page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-image: url('bgh.png');
+      background-attachment: fixed;
+      align-content: center;
+      font-family: Arial, sans-serif;
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      margin: 0;
+      background-color: #f4f4f4;
+      padding: 20px;
+      align-content: center;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: 3px;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      color: #FFD700;
+      background-color: rgba(228, 226, 226, 0.5);
+      padding: 10px;
+      display: inline-block;
+    }
+
+    h2 {
+      color: #fff;
+      margin-top: 50px;
+      font-size: 28px;
+      text-shadow: 2px 2px 4px rgba(156, 152, 152, 0.5);
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 24px;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      background-color: #3e7e78;
+      border-radius: 4px;
+      box-shadow: 2px 2px 4px rgba(97, 94, 94, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #58998d;
+    }
+
+    .animated-texth1 {
+      animation: color-change-h1 5s linear infinite;
+    }
+
+    .animated-texth2 {
+      animation: color-change-h2 5s linear infinite;
+    }
+
+    @keyframes color-change-h1 {
+      0% {
+        color: #655f5f;
+      }
+      50% {
+        color: #170582;
+      }
+      100% {
+        color: #493c3c;
+      }
+    }
+    @keyframes color-change-h2 {
+      0% {
+        color: #dae2e5;
+      }
+      25% {
+        color: #fcfcfc;
+      }
+      50% {
+        color: #f9f3f3;
+      }
+      75% {
+        color: #d9d9d9;
+      }
+      100% {
+        color: #fff9f9;
+      }
+    }
+  </style>
+</head>
+<body>
+   <div class="main">
+    <h1><span class="animated-texth1">QR Code</span> Implementation</h1>
+   </div> 
+  <h2 class="animated-texth2">If details are already in PDF, click below</h2>
+
+  <div>
+    <a class="button" href="firebase.html"><i class="fas fa-upload upload-storage-icon" style="margin: 2px;"></i>Upload</a>
+  </div>
+  
+  <h2 class="animated-texth2">And if not, let's combine all details in PDF</h2>
+  
+  <div>
+    <a class="button" href="combine.html"><i class="fas fa-solid fa-file-pdf" style="margin: 2px;"></i>Combine</a>
+  </div>
+</body>
+</html>

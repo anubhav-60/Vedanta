@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vedanta Driver Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Roboto+Slab&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .scroll {
+            display: inline-block;
+            color: #0f0e0e;
+            text-align: center;
+            width: 100%;
+            height: auto;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        nav {
+            background-color: #79a99f;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .navbar-container a {
+            display: inline-block;
+            padding: 8px 10px;
+            margin: 0 10px;
+            color: #f7f2f2;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .navbar-container a:hover {
+            font-weight: bolder;
+            color: #460707;
+        }
+
+        .generate-qr-icon {
+            margin-right: 5px;
+        }
+
+        .upload-storage-icon {
+            margin-right: 5px;
+        }
+
+        form {
+            width: 400px;
+            margin: 0 auto;
+            margin-bottom: 5px;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+            transform: perspective(1000px); /* Apply a rotation effect */
+            padding: 40px;
+            background-color: #efede2;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #9e9c9c;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            border-color: #4CAF50;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0bb6a5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #resultContainer {
+            margin-top: 20px;
+            margin-left: 50px;
+            margin-right: 50px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            background-color: #F8F8FF;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            color: #000000; /* Update the text color for contrast */
+            border-radius: 4px;
+        }
+
+        .pdf-page {
+            page-break-after: always;
+            margin-bottom: 20px;
+            max-width: 600px; /* Adjust the max-width as per your desired size */
+            margin: 0 auto;
+            text-align: center; /* Center align the text details */
+            padding: 10px; /* Add padding for spacing */
+            border-radius: 4px;
+            background-color: #F8F8FF;
+        }
+
+        .pdf-page img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .pdf-page p {
+            margin: 10px 0;
+        }
+
+        .new-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-link:hover {
+            background-color: #45a049;
+        }
+
+        #messageContainer {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    #messageBox {
+        margin-bottom: 20px;
+    }
+
+    #proceedButton {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    #proceedButton:hover {
+        background-color: #45a049;
+    }
+
+    #resetButton {
+        margin-top: 20px;
+        margin-left: 5px;
+        padding: 10px 20px;
+        background-color: #f44336;
+        text-align: center;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+    }
+
+    #resetButton:hover {
+        background-color: #d32f2f;
+    }
+  .icon-link {
+    display: inline-block;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar-container">
+            <a href="generateQR.html" class="button">
+                <i class="fas fa-qrcode generate-qr-icon"></i>Generate QR
+            </a>
+            <a href="firebase.html" class="button">
+                <i class="fas fa-upload upload-storage-icon"></i>Upload file in storage
+            </a>
+        </div>
+    </nav>
+    <h1>All required documents will be combined in single PDF</h1>   
+    <form id="inputForm">
+        <label for="name">Driver's Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Driver's Age:</label>
+        <input type="text" id="age" name="age" required>
+
+        <label for="vehicleNo">Vehicle Number:</label>
+        <input type="text" id="vehicleNo" name="vehicleNo" placeholder="AB30CD0420" required>
+
+        <label for="licenceNo">Driving Licence No.:</label>
+        <input type="text" id="licenceNo" name="licenceNo" placeholder="RL1234567890" required>
+
+        <label for="authorizationCard">Driver's Authorization Card:</label>
+        <input type="file" id="authorizationCard" name="authorizationCard" accept=".png, .jpg, .jpeg" required>
+
+        <label for="license">Driver's License Card:</label>
+        <input type="file" id="license" name="license" accept=".png, .jpg, .jpeg" required>
+
+        <label for="fitnessPapers">Vehicle Fitness Paper:</label>
+        <input type="file" id="fitnessPapers" name="fitnessPapers" accept=".png, .jpg, .jpeg" required>
+
+        <label for="rc">RC:</label>
+        <input type="file" id="rc" name="rc" accept=".png, .jpg, .jpeg" required>
+
+        <label for="insurance">Insurance Paper:</label>
+        <input type="file" id="insurance" name="insurance" accept=".png, .jpg, .jpeg" required>
+
+        <label for="pollution">Pollution Control Certificate:</label>
+        <input type="file" id="pollution" name="pollution" accept=".png, .jpg, .jpeg" required>
+
+        <label for="monthlychecklist">Monthly Checklist of Vehicle:</label>
+        <input type="file" id="monthlychecklist" name="monthlychecklist" accept=".png, .jpg, .jpeg" required>
+
+        <input type="submit" value="Generate PDF Document">
+    </form>
+    <div class="scroll">
+        <p id="slideText">Scroll down to see and download the generated PDF</p>
+        </div> 
+    <div id="resultContainer">
+        <h2>Generated PDF</h2>
+        <div id="generatedPDF"></div>
+        <div class="new-link">
+            <a href="#" id="downloadLink" class="download-link">Download PDF<i class="fas fa-download download-icon" style="margin:auto 2px" style="color: #fff;"></i></a>
+            
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script>
+        document.getElementById('inputForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var vehicleNo = document.getElementById('vehicleNo').value;
+            var licenceNo = document.getElementById('licenceNo').value;
+    
+            var authorizationCard = document.getElementById('authorizationCard').files[0];
+            var license = document.getElementById('license').files[0];
+            var fitnessPapers = document.getElementById('fitnessPapers').files[0];
+            var rc = document.getElementById('rc').files[0];
+            var insurance = document.getElementById('insurance').files[0];
+            var pollution = document.getElementById('pollution').files[0];
+            var monthlychecklist = document.getElementById('monthlychecklist').files[0];
+    
+            var reader = new FileReader();
+    
+            reader.onload = function(event) {
+                var authorizationCardUrl = URL.createObjectURL(authorizationCard);
+                var licenseUrl = URL.createObjectURL(license);
+                var fitnessPapersUrl = event.target.result;
+                var rcUrl = URL.createObjectURL(rc);
+                var insuranceUrl = URL.createObjectURL(insurance);
+                var pollutionUrl = URL.createObjectURL(pollution);
+                var monthlychecklistUrl = URL.createObjectURL(monthlychecklist);
+    
+    
+                var generatedPDF = `
+                    <div class="pdf-page">
+                        <p>Driver's Name: ${name}</p>
+                        <p>Driver's Age: ${age}</p>
+                        <p>Vehicle No.: ${vehicleNo}</p>
+                        <p>Driver's Licence No.: ${licenceNo}</p>
+                    </div>
+                    <div class="pdf-page">
+                        <img src="${authorizationCardUrl}" alt="Authorization Card">
+                    </div>
+                    <div class="pdf-page">
+                        <img src="${licenseUrl}" alt="Driving License">
+                    </div>
+                    <div class="pdf-page">
+                        <img src="${fitnessPapersUrl}" alt="Fitness Papers">
+                    </div>
+                    
+                    <div class="pdf-page">
+                        <img src="${rcUrl}" alt="RC">
+                    </div>
+                    <div class="pdf-page">
+                        <img src="${insuranceUrl}" alt="Insurance Papers">
+                    </div>
+                    <div class="pdf-page">
+                        <img src="${pollutionUrl}" alt="Pollution Control Papers">
+                    </div>
+                    <div class="pdf-page">
+                        <img src="${monthlychecklistUrl}" alt="Checklist Papers">
+                    </div>
+                `;
+    
+                document.getElementById('generatedPDF').innerHTML = generatedPDF;
+                document.getElementById('resultContainer').style.display = 'block';
+    
+                // Download PDF
+                document.getElementById('downloadLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+    
+                    var opt = {
+                        margin: [0.5, 0.5, 0.5, 0.5],
+                        filename: 'generated_pdf_document.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2 },
+                        jsPDF: { unit: 'in', format: 'A4' , orientation: 'portrait' }
+                    };
+    
+                    var element = document.getElementById('generatedPDF');
+                    html2pdf().set(opt).from(element).save();
+    
+                    // Display message
+                    var messageContainer = document.createElement('div');
+                    messageContainer.id = 'messageContainer';
+                    var messageBox = document.createElement('div');
+                    messageBox.id = 'messageBox';
+                    messageBox.innerHTML = '<p>Please upload the downloaded PDF to the storage and copy the download link to a QR code generator website to generate a QR code.</p>';
+                    messageContainer.appendChild(messageBox);
+    
+                    var proceedButton = document.createElement('a');
+                    proceedButton.id = 'proceedButton';
+                    proceedButton.innerHTML = 'Proceed to Upload';
+                    proceedButton.href = 'firebase.html'; // Replace 'upload.html' with the actual URL of the upload webpage
+                    messageContainer.appendChild(proceedButton);
+
+    
+                    var resetButton = document.createElement('button');
+                    resetButton.id = 'resetButton';
+                    resetButton.innerHTML = 'Reset';
+                    resetButton.addEventListener('click', function() {
+                        location.reload(); // Refresh the page
+                    });
+                    messageContainer.appendChild(resetButton);
+    
+                    document.body.appendChild(messageContainer);
+                });
+            };
+            reader.readAsDataURL(fitnessPapers);
+        });
+    </script>   
+</body>
+</html>

@@ -1,0 +1,136 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 2px;
+}
+body{
+    display: flex;
+    background: #f4f4f4;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.inputfile{
+    display: none;
+}
+.fileText{
+    margin-bottom: 10px;
+}
+label{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 100px;
+    background: linear-gradient(45deg,green, lightgreen );
+    cursor: pointer;
+
+}
+
+.link{
+    color: #000;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 800;
+    display: inline;
+}
+.link:hover{
+    color: #dc4716f5;
+    text-decoration: underline;
+}
+.imageUploaded{
+    margin-top: 10px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #8ba28d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+button:hover{
+    background-color: #45a09a;
+}
+#return {
+    margin-top: 20px;
+}
+.messageBox {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    margin: 20px auto;
+    max-width: 400px;
+    padding: 20px;
+    align-content: center;
+}
+
+.messageBox p {
+    color: #333;
+    font-size: 16px;
+    margin: 0;
+}
+
+.messageBox a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.messageBox button {
+    background-color: #0066cc;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    align-self: center;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 8px 16px;
+}
+
+.messageBox button:hover {
+    background-color: #0052b3;
+}
+progress {
+    width: 100%;
+    height: 20px;
+    appearance: none;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    background-color: #d6d0d0;
+    overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #b3b0b0;
+}
+
+progress::-webkit-progress-value {
+    background-color: #2e4173; /* Set your desired color for the progress */
+}
+
+progress::-moz-progress-bar {
+    background-color: #375067; /* Set your desired color for the progress */
+}
+
+progress::-ms-fill {
+    background-color: #333d60; /* Set your desired color for the progress */
+}
+
+.progress-label {
+    font-weight: bold;
+    color: #000;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}

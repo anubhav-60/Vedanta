@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"],
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #8ba28d;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #45a09a;
+        }
+
+        #qrCodeContainer {
+            text-align: center;
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        #qrCodeImage {
+            padding: 15px;
+            max-width: 300px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #downloadQRCodeButton {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        #return {
+            margin-top: 20px;
+        }
+    </style>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code for Vehicles</h1>
+        <form id="qrForm">
+            <label for="link">Enter the Driver details PDF link:</label>
+            <input type="text" id="link" required>
+            <input type="submit" value="Generate QR Code">
+        </form>
+
+        <div id="qrCodeContainer">
+            <img id="qrCodeImage" alt="QR Code" src="">
+        </div>
+        
+        <button id="downloadQRCodeButton"><i class="fas fa-download download-icon" style="margin:auto 2px"></i>Download QR Code</button>
+        <button id="return" onclick="window.location.href='index.html'"><i class="fas fa-home upload-home-icon" style="margin: auto 2px;"></i>Return To Home</button>
+    </div>
+
+    <script>
+        document.getElementById('qrForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var link = document.getElementById('link').value;
+            var encodedLink = encodeURIComponent(link);
+            var qrCodeText = "Vedanta";
+
+            var qrCodeImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodedLink}&label=${qrCodeText}`;
+
+            var qrCodeContainer = document.getElementById('qrCodeContainer');
+            var qrCodeImage = document.getElementById('qrCodeImage');
+            var downloadQRCodeButton = document.getElementById('downloadQRCodeButton');
+
+            qrCodeImage.src = qrCodeImageUrl;
+            qrCodeContainer.style.display = 'block';
+            downloadQRCodeButton.style.display = 'block';
+        });
+        
+        document.getElementById('downloadQRCodeButton').addEventListener('click', function() {
+            var qrCodeImage = document.getElementById('qrCodeImage');
+            var link = document.createElement('a');
+            link.href = qrCodeImage.src;
+            link.download = 'qr-code.png';
+            link.click();
+        });
+    </script>
+
+
+</body>
+</html>

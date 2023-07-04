@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload file on Firebase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <input
+     type="file"
+     class="inputfile"
+     id="fileInp"
+     onchange="getFile(event)"
+     accept="application/pdf"
+     />
+     <label for="fileInp">+</label>
+     <span class="fileText"></span>
+     <button onclick="uploadImage()"> <i class="fas fa-upload upload-storage-icon"></i>Upload file</button>
+     <div id="progressContainer" style="display: none;">
+        <progress id="uploadProgress" value="0" max="100"></progress>
+        <div class="progress-label"></div>
+    </div>
+    
+
+
+     <div class="messageBox" id="messageBox">
+         <p>Send a mail with your name, organization name and email id by simply filling the form after clicking OK.</p>
+         <button onclick="openForm()">OK</button>
+     </div>
+     <div id="downloadUrlContainer" style="display: none;">
+        <input type="text" id="downloadUrlInput" readonly>
+        <button onclick="copyDownloadUrl()">Copy URL</button>
+    </div>
+     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+     <script src="./firebase.js"></script>
+     <script>
+        function requestAccess() {
+            var response = confirm("Please take permission to access Firebase. If already have permission then click OK to proceed and if not click Cancel?");
+            if (response) {
+                window.location.href = "https://console.firebase.google.com/u/0/project/vedanta-hackathon/storage/vedanta-hackathon.appspot.com/files";
+                
+            } else {
+                document.getElementById("messageBox").style.display = "block";
+            }
+        }
+        function openForm() {
+            window.location.href = "form.html";
+        }
+     </script>
+          <button id="return" onclick="window.location.href='generateQR.html'"><i class="fas fa-qrcode generate-qr-icon"></i>Generate QR</button>
+     <a class="link" href="javascript:void(0);" onclick="requestAccess()">Go to Firebase page</a> 
+</body>
+</html>

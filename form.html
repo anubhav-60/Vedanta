@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Take access</title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container h2 {
+            text-align: center;
+        }
+        .container input[type="text"],
+        .container input[type="email"],
+        .container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .buttonclass{
+            text-align: center;
+        }
+        .animated-text {
+      animation: color-change 2s linear infinite;
+    }
+
+    @keyframes color-change {
+      0% {
+        color: #655f5f;
+      }
+      50% {
+        color: #dc4716f5;
+      }
+      100% {
+        color: #675d5d;
+      }
+    }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #bd7171;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+            text-decoration: underline;
+        }
+        a:hover {
+            color: #813737;
+        }
+        #return {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Submit your detail to take access</h2>
+        <form action="mailto:anubhavsri724@gmail.com" method="post" enctype="text/plain">
+             <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="organization" placeholder="Organization Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="buttonclass">
+    <a class="animated-text" id="return" href='firebase.html'">Go back</a>
+    </div>
+</body>
+</html>
